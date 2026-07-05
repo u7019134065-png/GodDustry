@@ -1,0 +1,11 @@
+# Mindustry / build artifacts
+*.jar
+build/
+.gradle/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

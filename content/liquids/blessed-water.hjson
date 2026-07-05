@@ -1,0 +1,8 @@
+# Blessed Water — a restorative liquid for GodDustry.
+type: Liquid
+name: Blessed Water
+color: 8fdcff
+description: Sacred chilled water that carries a soft restorative glow.
+heatCapacity: 1.15
+viscosity: 0.35
+temperature: 0.15

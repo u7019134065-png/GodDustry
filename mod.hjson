@@ -1,0 +1,32 @@
+# ============================================================
+#  GodDustry - mod metadata
+#  This file uses Hjson (https://hjson.github.io/), a superset
+#  of JSON. Comments and unquoted keys/strings are allowed.
+# ============================================================
+
+# Internal name used to reference this mod. Must be kebab-case
+# (lowercase, spaces replaced with "-") and contain no color codes.
+name: goddustry
+
+# Name shown in the in-game mod browser. May contain color markup.
+displayName: "[gold]God[white]Dustry"
+
+# Author(s) of the mod.
+author: "JSHON"
+
+# Short description rendered in the in-game mod manager.
+description: "A divine content pack template for Mindustry: a new item, liquid and a holy turret. Use it as a clean, well-commented starting point for your own JSON/Hjson mods."
+
+# Semantic-ish version of the mod.
+version: "1.0"
+
+# Minimum game build required. Must be a number greater than 105.
+# 146 corresponds to the stable v7 line.
+minGameVersion: 146
+
+# Other mods this one depends on (by their internal name).
+dependencies: []
+
+# Whether the mod is hidden from the multiplayer sync/version check.
+# Content mods should stay visible (false).
+hidden: false

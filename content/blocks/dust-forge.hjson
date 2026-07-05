@@ -1,0 +1,20 @@
+# Dust Forge — a basic crafter that converts copper into Holy Dust.
+type: GenericCrafter
+name: Dust Forge
+category: crafting
+size: 2
+health: 300
+craftTime: 60
+requirements: [
+  copper/60
+  graphite/35
+  lead/45
+]
+consumeItems: [
+  copper/3
+]
+consumePower: 1.4
+outputItems: [
+  "goddustry-holy-dust/1"
+]
+research: graphite-press

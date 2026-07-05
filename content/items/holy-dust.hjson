@@ -1,0 +1,9 @@
+# Holy Dust — a refined mod item for GodDustry.
+type: Item
+name: Holy Dust
+color: ffd45e
+description: A radiant golden powder used to power divine machinery.
+explosiveness: 0.15
+flammability: 0.0
+hardness: 1
+cost: 1.3

@@ -14,8 +14,11 @@ displayName: "[gold]God[white]Dustry"
 # Author(s) of the mod.
 author: "JSHON"
 
-# Short description rendered in the in-game mod manager.
-description: "A divine content pack template for Mindustry: a new item, liquid and a holy turret. Use it as a clean, well-commented starting point for your own JSON/Hjson mods."
+# Description rendered in the in-game mod manager.
+# The localized version is applied at runtime from the bundles
+# (keys mod.goddustry.displayName / mod.goddustry.description) by
+# scripts/main.js, so this English text is only the fallback.
+description: "GodDustry is a divine-themed content pack for Mindustry. It adds a full production-to-combat chain: the Holy Dust resource and Blessed Water liquid, drills and refineries to gather and craft them, power generators for every resource, a line of holy turrets, and five holy units built and upgraded through a dedicated factory and reconstructors. Every block, item and unit is documented and wired into the tech tree, so it works as both a ready-to-play pack and a clean, heavily-commented template for your own JSON/Hjson mods."
 
 # Semantic-ish version of the mod.
 version: "1.0"

@@ -23,7 +23,6 @@ ammoTypes: {
     lifetime: 55
     knockback: 0.8
     shootEffect: shootSmall
-    smokeEffect: smoke
     ammoMultiplier: 1
   }
   "goddustry-holy-dust": {
@@ -36,8 +35,7 @@ ammoTypes: {
     knockback: 1.2
     frontColor: ffd45e
     backColor: fff2b8
-    shootEffect: spark
-    smokeEffect: none
+    shootEffect: shootBig
     ammoMultiplier: 1
   }
 }

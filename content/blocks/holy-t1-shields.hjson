@@ -1,0 +1,31 @@
+type: UnitFactory
+category: units
+size: 3
+health: 420
+requirements: [
+  "copper/120"
+  "lead/100"
+  "silicon/50"
+]
+consumes: {
+  power: 3
+}
+plans: [
+  {
+    unit: "goddustry-holy-scout"
+    time: 900
+    requirements: [
+      "copper/60"
+      "lead/50"
+    ]
+  }
+  {
+    unit: "goddustry-holy-guard"
+    time: 1000
+    requirements: [
+      "copper/70"
+      "goddustry-holy-dust/20"
+    ]
+  }
+]
+research: ground-factory

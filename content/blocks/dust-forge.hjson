@@ -10,10 +10,12 @@ requirements: [
   graphite/35
   lead/45
 ]
-consumeItems: [
-  copper/3
-]
-consumePower: 1.4
+consumes: {
+  items: [
+    copper/3
+  ]
+  power: 1.4
+}
 outputItems: [
   "goddustry-holy-dust/1"
 ]

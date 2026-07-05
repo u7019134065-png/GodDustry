@@ -1,0 +1,28 @@
+type: flying
+health: 200
+hitSize: 9
+speed: 2.6
+rotateSpeed: 10
+accel: 0.08
+drag: 0.04
+range: 120
+armor: 0
+itemCapacity: 15
+weapons: [
+  {
+    name: goddustry-holy-scout-beam
+    x: 0
+    y: 0
+    reload: 34
+    top: true
+    rotate: false
+    bullet: {
+      type: BasicBulletType
+      damage: 18
+      speed: 3.8
+      lifetime: 42
+      width: 6
+      height: 8
+    }
+  }
+]

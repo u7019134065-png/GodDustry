@@ -1,0 +1,28 @@
+type: flying
+health: 1600
+hitSize: 28
+speed: 1.7
+rotateSpeed: 8
+accel: 0.09
+drag: 0.03
+range: 220
+armor: 5
+itemCapacity: 40
+weapons: [
+  {
+    name: goddustry-holy-seraph-cannon
+    x: 0
+    y: 0
+    reload: 22
+    top: true
+    rotate: false
+    bullet: {
+      type: BasicBulletType
+      damage: 60
+      speed: 4.8
+      lifetime: 70
+      width: 10
+      height: 14
+    }
+  }
+]

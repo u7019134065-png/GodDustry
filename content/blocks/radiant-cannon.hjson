@@ -1,0 +1,54 @@
+type: ItemTurret
+category: turret
+size: 3
+health: 860
+range: 260
+reload: 70
+rotateSpeed: 3
+shootSound: shootBig
+requirements: [
+  "copper/160"
+  "graphite/120"
+  "titanium/90"
+  "thorium/70"
+  "silicon/90"
+  "goddustry-holy-dust/40"
+]
+ammoTypes: {
+  graphite: {
+    type: BasicBulletType
+    speed: 3.5
+    damage: 80
+    width: 9
+    height: 11
+    lifetime: 70
+    knockback: 1.6
+    shootEffect: shootBig
+    ammoMultiplier: 1
+  }
+  titanium: {
+    type: BasicBulletType
+    speed: 3.8
+    damage: 110
+    width: 10
+    height: 12
+    lifetime: 74
+    knockback: 1.8
+    shootEffect: shootBig
+    ammoMultiplier: 1
+  }
+  "goddustry-holy-dust": {
+    type: BasicBulletType
+    speed: 4.2
+    damage: 150
+    width: 11
+    height: 13
+    lifetime: 78
+    knockback: 2.1
+    frontColor: ffd45e
+    backColor: fff3c6
+    shootEffect: shootBig
+    ammoMultiplier: 1
+  }
+}
+research: sanctifier

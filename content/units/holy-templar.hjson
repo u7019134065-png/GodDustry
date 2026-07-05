@@ -1,0 +1,28 @@
+type: mech
+health: 2000
+hitSize: 30
+speed: 0.72
+rotateSpeed: 7
+accel: 0.07
+drag: 0.05
+range: 240
+armor: 6
+itemCapacity: 50
+weapons: [
+  {
+    name: goddustry-holy-templar-judge
+    x: 0
+    y: 0
+    reload: 26
+    top: true
+    rotate: false
+    bullet: {
+      type: BasicBulletType
+      damage: 76
+      speed: 4.4
+      lifetime: 62
+      width: 11
+      height: 13
+    }
+  }
+]

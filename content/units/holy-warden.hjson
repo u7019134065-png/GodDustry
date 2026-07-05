@@ -1,0 +1,28 @@
+type: mech
+health: 700
+hitSize: 18
+speed: 0.78
+rotateSpeed: 7
+accel: 0.07
+drag: 0.05
+range: 170
+armor: 4
+itemCapacity: 30
+weapons: [
+  {
+    name: goddustry-holy-warden-lance
+    x: 0
+    y: 1
+    reload: 28
+    top: true
+    rotate: false
+    bullet: {
+      type: BasicBulletType
+      damage: 36
+      speed: 3.6
+      lifetime: 52
+      width: 8
+      height: 10
+    }
+  }
+]

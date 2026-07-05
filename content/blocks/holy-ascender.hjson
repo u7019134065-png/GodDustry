@@ -1,0 +1,19 @@
+type: Reconstructor
+category: units
+size: 3
+health: 620
+constructTime: 600
+requirements: [
+  "copper/160"
+  "graphite/140"
+  "titanium/90"
+  "silicon/70"
+]
+consumes: {
+  power: 4
+}
+upgrades: [
+  [ "goddustry-holy-scout", "goddustry-holy-warden" ]
+  [ "goddustry-holy-guard", "goddustry-holy-templar" ]
+]
+research: holy-t1-shields

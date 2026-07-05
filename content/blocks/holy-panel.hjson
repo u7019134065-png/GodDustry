@@ -1,0 +1,11 @@
+type: SolarGenerator
+category: power
+size: 2
+health: 150
+powerProduction: 1.2
+requirements: [
+  "silicon/45"
+  "copper/60"
+  "lead/30"
+]
+research: solar-panel

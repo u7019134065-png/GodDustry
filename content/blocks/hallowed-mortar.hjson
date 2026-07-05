@@ -1,0 +1,39 @@
+type: ItemTurret
+category: turret
+size: 2
+health: 420
+range: 220
+reload: 80
+rotateSpeed: 4
+shootSound: shootBig
+requirements: [
+  "copper/90"
+  "lead/75"
+  "graphite/55"
+  "titanium/35"
+]
+ammoTypes: {
+  copper: {
+    type: BasicBulletType
+    speed: 2.6
+    damage: 36
+    width: 8
+    height: 10
+    lifetime: 82
+    knockback: 1.3
+    shootEffect: shootBig
+    ammoMultiplier: 1
+  }
+  graphite: {
+    type: BasicBulletType
+    speed: 2.9
+    damage: 54
+    width: 8
+    height: 11
+    lifetime: 88
+    knockback: 1.5
+    shootEffect: shootBig
+    ammoMultiplier: 1
+  }
+}
+research: divine-turret

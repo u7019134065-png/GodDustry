@@ -15,12 +15,15 @@
 ![Mindustry](https://img.shields.io/badge/Mindustry-v7%2B-f25555?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-4caf50?style=for-the-badge)
 ![PRs](https://img.shields.io/badge/PRs-welcome-purple?style=for-the-badge)
+![Verified](https://img.shields.io/badge/headless%20load-v146%20clean-2ea44f?style=for-the-badge)
 
 </div>
 
 ---
 
-> **TL;DR** — GodDustry is *not* a Java mod. It is a pure **data mod**: a folder of `.hjson` files and PNG sprites that Mindustry reads at runtime. There is nothing to compile. Drop it in your `mods/` folder and play. Read the files top-to-bottom and you will understand how new items, liquids, turrets and crafters are defined.
+> **TL;DR** — GodDustry is *not* a Java mod. It is a pure **data mod**: a folder of `.hjson` files and PNG sprites that Mindustry reads at runtime. There is nothing to compile. Drop it in your `mods/` folder and play. Read the files top-to-bottom and you will understand how items, liquids, drills, generators, turrets, units, factories and reconstructors are defined.
+
+> ✅ **Verified:** the mod has been test-loaded on a headless Mindustry v146 server with zero content warnings.
 
 ---
 
@@ -34,6 +37,7 @@
 - [How Mindustry Mods Work](#-how-mindustry-mods-work)
 - [Anatomy of `mod.hjson`](#-anatomy-of-modhjson)
 - [Make It Your Own](#-make-it-your-own)
+- [How Many Sprites Does Each Thing Need?](#-how-many-sprites-does-each-thing-need)
 - [Spriting Rules](#-spriting-rules)
 - [Publishing to the In-Game Browser](#-publishing-to-the-in-game-browser)
 - [Troubleshooting](#-troubleshooting)
@@ -47,12 +51,14 @@
 
 **GodDustry** is a small, opinionated example mod for [Mindustry](https://mindustrygame.github.io/) — the open-source automation tower-defense RTS by Anuken.
 
-Most people learning to mod Mindustry hit the same wall: the official docs explain *concepts*, but a blank folder is intimidating. GodDustry fills that gap. It is a **fully working, minimal mod** that demonstrates the four content types you will use most often:
+Most people learning to mod Mindustry hit the same wall: the official docs explain *concepts*, but a blank folder is intimidating. GodDustry fills that gap. It is a **fully working, minimal mod** that now demonstrates a complete starter content set:
 
-- a custom **item**,
-- a custom **liquid**,
-- a custom **turret** (with item ammo),
-- a custom **crafter** (that produces the custom item).
+- a custom **item** and **liquid**,
+- a **production chain** from raw inputs to Holy Dust,
+- a family of **drills**,
+- **power generators**,
+- multiple **turrets**,
+- and a full **unit line** with a factory and reconstructors.
 
 Every file is commented. Every sprite is the correct size and pixel format. Every cross-reference (`goddustry-holy-dust`, tech-tree `research`, `bundles`) is wired up so you can see how the pieces connect — then rip them out and replace them with your own ideas.
 
@@ -68,18 +74,78 @@ Every file is commented. Every sprite is the correct size and pixel format. Ever
 | 🌐 **Localised** | Ships with an English `bundle.properties`; add any language you like. |
 | 🌳 **Tech-tree ready** | Content is slotted into the research tree via the `research` field. |
 | 🔗 **Cross-references** | Shows how blocks consume/output your own custom items. |
-| ♻️ **Fork-friendly** | Rename one field and the whole mod becomes *yours*. |
+| 🧪 **Verified load** | Headless Mindustry v146 loads the mod cleanly, with zero content warnings. |
+| ♻ **Fork-friendly** | Rename one field and the whole mod becomes *yours*. |
 
 ---
 
 ## 🧪 The Content
 
-| Sprite | Name | Type | What it demonstrates |
-|:------:|------|------|----------------------|
-| <img src="sprites/items/holy-dust.png" width="32"/> | **Holy Dust** | `Item` | Defining a resource: `color`, `cost`, `explosiveness`, `hardness`. |
-| <img src="sprites/liquids/blessed-water.png" width="32"/> | **Blessed Water** | `Liquid` | Defining a fluid: `heatCapacity`, `viscosity`, `temperature`. |
-| <img src="sprites/blocks/divine-turret.png" width="32"/> | **Divine Turret** | `ItemTurret` | A turret with **two ammo types**, including a custom-item round. |
-| <img src="sprites/blocks/dust-forge.png" width="32"/> | **Dust Forge** | `GenericCrafter` | A factory that **consumes** copper + power and **outputs** Holy Dust. |
+GodDustry now ships a full little tech slice: raw resources, a dust production chain, mining drills, power generation, offensive turrets, and a unit path that climbs from T1 factory production into T2/T3 reconstruction.
+
+### Resources
+
+| Sprite | Name | Type | Purpose |
+|:------:|------|------|---------|
+| <img src="sprites/items/holy-dust.png" width="32"/> | **Holy Dust** | `Item` | Golden resource used by the mod's production and power blocks. |
+| <img src="sprites/liquids/blessed-water.png" width="32"/> | **Blessed Water** | `Liquid` | Light-blue liquid used as a boost/consumption ingredient. |
+
+### Production / Crafting
+
+| Sprite | Name | Type | Purpose |
+|:------:|------|------|---------|
+| <img src="sprites/blocks/dust-forge.png" width="32"/> | **Dust Forge** | `GenericCrafter` | Converts copper and power into Holy Dust. |
+| <img src="sprites/blocks/holy-refinery.png" width="32"/> | **Holy Refinery** | `GenericCrafter` | Refines copper, blessed water, and power into more Holy Dust. |
+
+### Drills
+
+| Sprite | Name | Type | Purpose |
+|:------:|------|------|---------|
+| <img src="sprites/blocks/holy-drill-i.png" width="32"/> | **Holy Drill I** | `Drill` | Starter ore drill for tier-3 resources. |
+| <img src="sprites/blocks/holy-drill-ii.png" width="32"/> | **Holy Drill II** | `Drill` | Improved drill with a better mining tier and speed. |
+| <img src="sprites/blocks/holy-drill-iii.png" width="32"/> | **Holy Drill III** | `Drill` | Larger drill for harder ore veins. |
+| <img src="sprites/blocks/holy-bore.png" width="32"/> | **Holy Bore** | `Drill` | Power- and liquid-boosted bore for high throughput. |
+| <img src="sprites/blocks/holy-quarry.png" width="32"/> | **Holy Quarry** | `Drill` | Massive end of the drill line with the fastest extraction. |
+
+Tech-tree note: the drill line chains forward in order — Holy Drill I → II → III → Holy Bore → Holy Quarry.
+
+### Power
+
+| Sprite | Name | Type | Purpose |
+|:------:|------|------|---------|
+| <img src="sprites/blocks/dust-reactor.png" width="32"/> | **Dust Reactor** | `ConsumeGenerator` | Burns Holy Dust into steady power. |
+| <img src="sprites/blocks/blessed-turbine.png" width="32"/> | **Blessed Turbine** | `ConsumeGenerator` | Turns blessed water into power. |
+| <img src="sprites/blocks/holy-panel.png" width="32"/> | **Holy Panel** | `SolarGenerator` | Simple solar power source. |
+
+### Turrets
+
+| Sprite | Name | Type | Purpose |
+|:------:|------|------|---------|
+| <img src="sprites/blocks/divine-turret.png" width="32"/> | **Divine Turret** | `ItemTurret` | Starter turret with copper and Holy Dust ammo. |
+| <img src="sprites/blocks/hallowed-mortar.png" width="32"/> | **Hallowed Mortar** | `ItemTurret` | Long-range artillery turret with arcing shells. |
+| <img src="sprites/blocks/sanctifier.png" width="32"/> | **Sanctifier** | `PowerTurret` | Power laser turret built around a single beam shot. |
+| <img src="sprites/blocks/radiant-cannon.png" width="32"/> | **Radiant Cannon** | `ItemTurret` | Heavy 3×3 cannon with stronger ammo options. |
+| <img src="sprites/blocks/aegis-array.png" width="32"/> | **Aegis Array** | `ItemTurret` | Fast defensive turret that targets air and ground. |
+
+### Units
+
+| Sprite | Name | Type | Purpose |
+|:------:|------|------|---------|
+| <img src="sprites/units/holy-scout.png" width="32"/> | **Holy Scout** | `flying` | T1 scout unit for early production. |
+| <img src="sprites/units/holy-guard.png" width="32"/> | **Holy Guard** | `mech` | T1 ground unit for basic combat. |
+| <img src="sprites/units/holy-warden.png" width="32"/> | **Holy Warden** | `mech` | T2 upgrade path unit. |
+| <img src="sprites/units/holy-seraph.png" width="32"/> | **Holy Seraph** | `flying` | T3 upgraded air unit. |
+| <img src="sprites/units/holy-templar.png" width="32"/> | **Holy Templar** | `mech` | T3 upgraded ground unit. |
+
+### Unit Production
+
+| Sprite | Name | Type | Purpose |
+|:------:|------|------|---------|
+| <img src="sprites/blocks/holy-t1-shields.png" width="32"/> | **Holy T1 Shields** | `UnitFactory` | Produces the first holy units. |
+| <img src="sprites/blocks/holy-ascender.png" width="32"/> | **Holy Ascender** | `Reconstructor` | Upgrades T1 units to T2. |
+| <img src="sprites/blocks/holy-transcender.png" width="32"/> | **Holy Transcender** | `Reconstructor` | Upgrades T2 units to T3. |
+
+Tech-tree note: `Holy T1 Shields` starts the unit line, `Holy Ascender` promotes T1 → T2, and `Holy Transcender` promotes T2 → T3.
 
 > These stats are intentionally modest and *illustrative*. Treat them as a starting point for your own balancing, not as gospel.
 
@@ -91,22 +157,94 @@ Every file is commented. Every sprite is the correct size and pixel format. Ever
 GodDustry/
 ├── mod.hjson                       # required — mod metadata (name, author, version…)
 ├── icon.png                        # 128×128 icon shown in the in-game mod browser
-├── content/                        # all game content lives here
+├── content/
 │   ├── items/
 │   │   └── holy-dust.hjson         # → item id "holy-dust"
 │   ├── liquids/
 │   │   └── blessed-water.hjson     # → liquid id "blessed-water"
-│   └── blocks/
-│       ├── divine-turret.hjson     # → block id "divine-turret"
-│       └── dust-forge.hjson        # → block id "dust-forge"
+│   ├── blocks/
+│   │   ├── aegis-array.hjson
+│   │   ├── blessed-turbine.hjson
+│   │   ├── divine-turret.hjson
+│   │   ├── dust-forge.hjson
+│   │   ├── dust-reactor.hjson
+│   │   ├── hallowed-mortar.hjson
+│   │   ├── holy-ascender.hjson
+│   │   ├── holy-bore.hjson
+│   │   ├── holy-drill-i.hjson
+│   │   ├── holy-drill-ii.hjson
+│   │   ├── holy-drill-iii.hjson
+│   │   ├── holy-panel.hjson
+│   │   ├── holy-quarry.hjson
+│   │   ├── holy-refinery.hjson
+│   │   ├── holy-t1-shields.hjson
+│   │   ├── holy-transcender.hjson
+│   │   ├── radiant-cannon.hjson
+│   │   └── sanctifier.hjson
+│   └── units/
+│       ├── holy-guard.hjson
+│       ├── holy-scout.hjson
+│       ├── holy-seraph.hjson
+│       ├── holy-templar.hjson
+│       └── holy-warden.hjson
 ├── bundles/
 │   └── bundle.properties           # English display names & descriptions
-└── sprites/                        # PNG art, found recursively by content name
-    ├── items/holy-dust.png
-    ├── liquids/blessed-water.png
-    └── blocks/
-        ├── divine-turret.png
-        └── dust-forge.png
+├── sprites/
+│   ├── items/holy-dust.png
+│   ├── liquids/blessed-water.png
+│   ├── blocks/
+│   │   ├── aegis-array.png
+│   │   ├── blessed-turbine.png
+│   │   ├── blessed-turbine-top.png
+│   │   ├── divine-turret.png
+│   │   ├── dust-forge.png
+│   │   ├── dust-reactor.png
+│   │   ├── dust-reactor-top.png
+│   │   ├── hallowed-mortar.png
+│   │   ├── holy-ascender.png
+│   │   ├── holy-ascender-top.png
+│   │   ├── holy-bore.png
+│   │   ├── holy-bore-rotator.png
+│   │   ├── holy-bore-top.png
+│   │   ├── holy-drill-i.png
+│   │   ├── holy-drill-i-rotator.png
+│   │   ├── holy-drill-i-top.png
+│   │   ├── holy-drill-ii.png
+│   │   ├── holy-drill-ii-rotator.png
+│   │   ├── holy-drill-ii-top.png
+│   │   ├── holy-drill-iii.png
+│   │   ├── holy-drill-iii-rotator.png
+│   │   ├── holy-drill-iii-top.png
+│   │   ├── holy-panel.png
+│   │   ├── holy-quarry.png
+│   │   ├── holy-quarry-rotator.png
+│   │   ├── holy-quarry-top.png
+│   │   ├── holy-refinery.png
+│   │   ├── holy-t1-shields.png
+│   │   ├── holy-t1-shields-top.png
+│   │   ├── holy-transcender.png
+│   │   ├── holy-transcender-top.png
+│   │   ├── radiant-cannon.png
+│   │   └── sanctifier.png
+│   └── units/
+│       ├── holy-guard-cell.png
+│       ├── holy-guard.png
+│       ├── holy-scout-cell.png
+│       ├── holy-scout.png
+│       ├── holy-seraph-cell.png
+│       ├── holy-seraph.png
+│       ├── holy-templar-cell.png
+│       ├── holy-templar.png
+│       ├── holy-warden-cell.png
+│       ├── holy-warden.png
+│       └── weapons/
+│           ├── goddustry-holy-guard-caster.png
+│           ├── goddustry-holy-scout-beam.png
+│           ├── goddustry-holy-seraph-cannon.png
+│           ├── goddustry-holy-templar-judge.png
+│           └── goddustry-holy-warden-lance.png
+└── tools/
+    └── gen_sprites.py              # reproducible placeholder sprite generator
 ```
 
 **The golden rule:** a piece of content is identified by its **file stem** (the filename without extension). `content/items/holy-dust.hjson` creates an item named `holy-dust`, and Mindustry will automatically look for `sprites/**/holy-dust.png` to draw it. When one mod references another mod's content, the id is prefixed with the mod name — hence `goddustry-holy-dust`.
@@ -205,6 +343,31 @@ Turning GodDustry into a brand-new mod takes about five minutes:
 
 ---
 
+## 🧩 How Many Sprites Does Each Thing Need?
+
+The official spriting wiki is worth following closely, but the short version is:
+
+| Content type | Sprites it looks for | Notes |
+|--------------|----------------------|-------|
+| Item / Liquid | 1 sprite | Usually `32×32`; the file stem is the id. |
+| Wall / simple block | 1 sprite | Block sprites are `32 × size` pixels. |
+| Drill | Base + `<name>-rotator` + `<name>-top` | Up to 3 sprites total. |
+| Crafter | Base + optional `<name>-top` / `<name>-liquid` + drawer regions | Usually 1–4 sprites depending on visuals. |
+| Turret | Base + optional `<name>-heat` / `<name>-glow`; liquid turrets add `<name>-liquid` | Leave transparent margin; the game adds the outline. |
+| Generator | Base + optional `<name>-top` / `<name>-glow` | Usually 1–2 sprites. |
+| Unit factory / reconstructor | Base + `<name>-top` | The top region rotates/overlays the body. |
+| Unit | `<name>.png` + `<name>-cell.png` + one sprite per weapon | Legged units also need leg regions; recommended minimum is 48px. |
+
+Quick reminders:
+
+- Block sprite size = `32 × block size in tiles`.
+- Leave about a 4px transparent margin around turrets and units so Mindustry's outline has room to breathe.
+- PNGs must be **32-bit RGBA**.
+- The vanilla reference sprites live at [Anuken/Mindustry/tree/master/core/assets-raw/sprites](https://github.com/Anuken/Mindustry/tree/master/core/assets-raw/sprites).
+- The placeholders in this repo are generated by [`tools/gen_sprites.py`](tools/gen_sprites.py).
+
+---
+
 ## 🖼 Spriting Rules
 
 Mindustry is strict about art. Follow these or the game will refuse to load your sprite:
@@ -213,7 +376,7 @@ Mindustry is strict about art. Follow these or the game will refuse to load your
 - **Block size:** a block sprite must be `32 × size` pixels. A `2×2` block ⇒ `64×64`. A `1×1` block ⇒ `32×32`.
 - **Items & liquids:** `32×32`.
 - **Turret borders:** the game auto-adds a black outline to turrets, so leave a transparent margin around turret art.
-- **Atlas pages:** the first sub-folder under `sprites/` (e.g. `sprites/blocks/…`) decides the atlas page. Mirror the [vanilla layout](https://github.com/Anuken/Mindustry/tree/master/core/assets-raw/sprites) to avoid rendering lag.
+- **Atlas pages:** the first sub-folder under `sprites/` (e.g. `sprites/blocks/...`) decides the atlas page. Mirror the [vanilla layout](https://github.com/Anuken/Mindustry/tree/master/core/assets-raw/sprites) to avoid rendering lag.
 
 Verify a PNG from the command line:
 

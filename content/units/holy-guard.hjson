@@ -1,0 +1,28 @@
+type: mech
+health: 260
+hitSize: 11
+speed: 0.9
+rotateSpeed: 8
+accel: 0.08
+drag: 0.06
+range: 130
+armor: 2
+itemCapacity: 20
+weapons: [
+  {
+    name: goddustry-holy-guard-caster
+    x: 0
+    y: 0
+    reload: 32
+    top: true
+    rotate: false
+    bullet: {
+      type: BasicBulletType
+      damage: 20
+      speed: 3.2
+      lifetime: 44
+      width: 7
+      height: 9
+    }
+  }
+]

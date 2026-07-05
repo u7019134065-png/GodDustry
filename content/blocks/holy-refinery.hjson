@@ -1,0 +1,24 @@
+type: GenericCrafter
+category: crafting
+size: 3
+health: 540
+craftTime: 90
+requirements: [
+  "copper/120"
+  "graphite/90"
+  "titanium/60"
+]
+consumes: {
+  items: [
+    "copper/4"
+  ]
+  liquid: {
+    liquid: goddustry-blessed-water
+    amount: 0.05
+  }
+  power: 2.5
+}
+outputItems: [
+  "goddustry-holy-dust/3"
+]
+research: dust-forge

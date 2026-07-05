@@ -1,0 +1,17 @@
+type: ConsumeGenerator
+category: power
+size: 2
+health: 240
+powerProduction: 4
+requirements: [
+  "copper/90"
+  "lead/70"
+  "titanium/35"
+]
+consumes: {
+  liquid: {
+    liquid: goddustry-blessed-water
+    amount: 0.06
+  }
+}
+research: dust-reactor

@@ -1,0 +1,19 @@
+type: Reconstructor
+category: units
+size: 4
+health: 920
+constructTime: 720
+requirements: [
+  "copper/240"
+  "graphite/200"
+  "titanium/160"
+  "thorium/100"
+  "silicon/120"
+]
+consumes: {
+  power: 6
+}
+upgrades: [
+  [ "goddustry-holy-warden", "goddustry-holy-seraph" ]
+]
+research: holy-ascender

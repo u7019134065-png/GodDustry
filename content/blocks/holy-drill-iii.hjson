@@ -1,0 +1,12 @@
+type: Drill
+category: production
+size: 3
+health: 420
+tier: 5
+drillTime: 180
+requirements: [
+  "copper/120"
+  "graphite/80"
+  "titanium/40"
+]
+research: holy-drill-ii

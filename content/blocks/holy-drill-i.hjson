@@ -1,0 +1,11 @@
+type: Drill
+category: production
+size: 2
+health: 180
+tier: 3
+drillTime: 350
+requirements: [
+  "copper/60"
+  "lead/45"
+]
+research: mechanical-drill

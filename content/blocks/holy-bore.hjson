@@ -1,0 +1,21 @@
+type: Drill
+category: production
+size: 3
+health: 520
+tier: 5
+drillTime: 135
+liquidBoostIntensity: 1.7
+requirements: [
+  "copper/150"
+  "graphite/110"
+  "titanium/60"
+]
+consumes: {
+  power: 1.2
+  liquid: {
+    liquid: goddustry-blessed-water
+    amount: 0.04
+    booster: true
+  }
+}
+research: holy-drill-iii
